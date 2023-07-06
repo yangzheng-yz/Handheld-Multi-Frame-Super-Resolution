@@ -527,6 +527,7 @@ def calculate_snr(image, shot_noise_level, read_noise_level):
     print("signal mean: ", signal)
     # Calculate the total noise level
     total_noise = np.sqrt(shot_noise_level**2 + read_noise_level**2)
+    print("total_noise: ", total_noise)
     print("shot_noise_level: ", shot_noise_level)
     print("read_noise_level: ", read_noise_level)
     # Calculate the SNR
@@ -821,6 +822,7 @@ def processRGB(rgb_img, image_name=None, burst_transformation_params=None, image
     SNR = calculate_snr(ref_raw, meta_info['shot_noise_level'], meta_info['read_noise_level'])
     SNR_params = get_params(SNR)
     print("ori SNR: ", SNR)
+    assert SNR > 22, "cannot perform SNR less than 22"
     std_curve, diff_curve = run_fast_MC(alpha, beta)
     
     #### Estimating ref image SNR

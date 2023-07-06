@@ -18,7 +18,7 @@ def get_params(SNR):
         Ts = 32
     else:
         Ts = 8 # 16
-        
+    
     # TODO this could be adressed by reworking the block matching module
     if Ts > 32:
         Ts = 32
@@ -144,6 +144,15 @@ def check_params_validity(params, imshape):
                                  imshape, lvl,
                                  (lvl_imshape_y, lvl_imshape_x),
                                  ts))
+            # warnings.warn("Image of shape {} is incompatible with the given "\
+            #         "block matching tile sizes and factors : at level {}, "\
+            #         "coarse image of shape {} cannot be divided into "\
+            #         "tiles of size {}.".format(
+            #             imshape, lvl,
+            #             (lvl_imshape_y, lvl_imshape_x),
+            #             ts))
+            
+            
     
 def merge_params(dominant, recessive):
     """
