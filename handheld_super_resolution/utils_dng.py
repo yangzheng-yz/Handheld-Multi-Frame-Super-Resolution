@@ -90,17 +90,17 @@ def load_dng_burst(burst_path):
             if index != ref_id:
 
                 raw_comp.append(rawObject.raw_image.copy())  # copy otherwise image data is lost when the rawpy object is closed
+                
     raw_comp = np.array(raw_comp)
-
     # Reference image selection and metadata
     raw = rawpy.imread(raw_path_list[ref_id])
     ref_raw = raw.raw_image.copy()
 
 
 
-
     #### Reading tags of the reference image
     xyz2cam = raw2rgb.get_xyz2cam_from_exif(raw_path_list[ref_id])
+    # print("is xyz2cam the rgb2cam?: ", xyz2cam)
 
     # reading exifs for white level, black leve and CFA
     with open(raw_path_list[ref_id], 'rb') as raw_file:

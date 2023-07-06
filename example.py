@@ -28,7 +28,7 @@ params={
         "scale":2,
         "merging" : {
             'kernel': 'handheld'},
-        'post processing' : {'on':True}
+        'post processing' : {'on':False}
         # Post processing is enabled by default,
         # but it can be turned off here
         }
@@ -43,9 +43,9 @@ os.makedirs('./results', exist_ok=True)
 plt.imsave('./results/output_img.png', img_as_ubyte(output_img))
 
 
-# plotting the result
-plt.figure("output")
-plt.imshow(output_img, interpolation = 'none')
-plt.xticks([])
-plt.yticks([])
+# # plotting the result
+# plt.figure("output")
+# plt.imshow(output_img, interpolation = 'none')
+# plt.xticks([])
+# plt.yticks([])
 

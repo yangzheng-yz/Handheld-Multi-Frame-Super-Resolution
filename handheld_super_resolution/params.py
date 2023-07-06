@@ -17,7 +17,7 @@ def get_params(SNR):
     elif SNR <= 22:
         Ts = 32
     else:
-        Ts = 16
+        Ts = 8 # 16
         
     # TODO this could be adressed by reworking the block matching module
     if Ts > 32:

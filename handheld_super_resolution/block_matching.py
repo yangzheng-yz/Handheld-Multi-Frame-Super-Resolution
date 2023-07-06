@@ -422,8 +422,8 @@ def local_search(referencePyramidLevel, alternatePyramidLevel,
     h, w, _ = upsampledAlignments.shape
     
     threadsperblock = (DEFAULT_THREADS, DEFAULT_THREADS)
-    blockspergrid_x = math.ceil(w/threadsperblock[1])
-    blockspergrid_y = math.ceil(h/threadsperblock[0])
+    blockspergrid_x = max(1, math.ceil(w/threadsperblock[1]))
+    blockspergrid_y = max(1, math.ceil(h/threadsperblock[0]))
     blockspergrid = (blockspergrid_x, blockspergrid_y)
 
     if distance == 'L1':
@@ -431,6 +431,8 @@ def local_search(referencePyramidLevel, alternatePyramidLevel,
                                                       tileSize, searchRadius,
                                                       upsampledAlignments)
     elif distance == 'L2':
+        print("blockspergrid: ", blockspergrid)
+        print("threadsperblock: ", threadsperblock)
         cuda_L2_local_search[blockspergrid, threadsperblock](referencePyramidLevel, alternatePyramidLevel,
                                                       tileSize, searchRadius,
                                                       upsampledAlignments)

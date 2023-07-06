@@ -160,3 +160,6 @@ cython_debug/
 
 #numba cache
 numba_cache
+
+results/
+test_burst/
